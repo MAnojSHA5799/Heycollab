@@ -104,13 +104,13 @@ const BusinessRegistrationForm = () => {
         <Col md={6} className="d-none d-md-flex align-items-center justify-content-center">
           <div className="form-image w-100 h-100">
             <Carousel fade controls={false} indicators={false} interval={1000} className="w-100 h-100 rounded-start-4 overflow-hidden">
-              <Carousel.Item>
+              {/* <Carousel.Item>
                 <img
                   src="/business/formal-man-using-tablet-office.jpg"
                   className="d-block w-100 h-100 object-fit-cover"
                   alt="Business slide 1"
                 />
-              </Carousel.Item>
+              </Carousel.Item> */}
               <Carousel.Item>
                 <img
                   src="/Cretor/man-woman-watching-laptop-office (1).jpg"
