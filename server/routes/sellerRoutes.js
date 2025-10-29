@@ -1,6 +1,6 @@
 import express from "express";
 import upload from "../middleware/uploadMiddleware.js";
-import { registerSeller } from "../controllers/sellerController.js";
+import { registerSeller, loginSeller, approveSeller, getSellerById } from "../controllers/sellerController.js";
 
 const router = express.Router();
 
@@ -19,3 +19,8 @@ router.post(
 );
 
 export default router;
+
+// Auth and approvals
+router.post("/login", loginSeller);
+router.patch("/:id/approve", approveSeller);
+router.get(":id", getSellerById);

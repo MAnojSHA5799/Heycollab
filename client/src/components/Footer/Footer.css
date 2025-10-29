@@ -19,20 +19,26 @@
   
   .footer-logo {
     flex: 1;
-    min-width: 220px;
+    min-width: 350px;
+
   }
   
   .footer-logo h1 {
     font-size: 2rem;
     font-weight: 700;
     color: #222;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     letter-spacing: 1px;
+    border: "2px solid red";
   }
   
   .footer-logo p {
     font-size: 0.95rem;
     color: #555;
+
+  }
+  .tech{
+    color: rgb(23, 34, 186);
   }
   
   /* Footer columns */

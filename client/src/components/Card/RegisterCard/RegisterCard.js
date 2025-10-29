@@ -36,6 +36,7 @@ const BusinessRegistrationForm = () => {
     returnAddress2: "",
     businessHours: "",
     supportContact: "",
+    password: "",
     aadhaar: null,
     pancard: null,
     gstCertificate: null,
@@ -102,7 +103,7 @@ const BusinessRegistrationForm = () => {
         {/* LEFT SIDE IMAGE SLIDER */}
         <Col md={6} className="d-none d-md-flex align-items-center justify-content-center">
           <div className="form-image w-100 h-100">
-            <Carousel fade controls={false} indicators={false} interval={2500} className="w-100 h-100 rounded-start-4 overflow-hidden">
+            <Carousel fade controls={false} indicators={false} interval={1000} className="w-100 h-100 rounded-start-4 overflow-hidden">
               <Carousel.Item>
                 <img
                   src="/business/formal-man-using-tablet-office.jpg"
@@ -110,20 +111,20 @@ const BusinessRegistrationForm = () => {
                   alt="Business slide 1"
                 />
               </Carousel.Item>
-              {/* <Carousel.Item>
+              <Carousel.Item>
                 <img
-                  src="/business/laptop-notepads-yellow-background-flat-lay.jpg"
+                  src="/Cretor/man-woman-watching-laptop-office (1).jpg"
                   className="d-block w-100 h-100 object-fit-cover"
                   alt="Business slide 2"
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  src="/business/side-view-young-businessman-using-digital-tablet-standing-against-wall.jpg"
+                  src="/Cretor/fashionable-woman-office-using-laptop (1).jpg"
                   className="d-block w-100 h-100 object-fit-cover"
                   alt="Business slide 3"
                 />
-              </Carousel.Item> */}
+              </Carousel.Item>
              
             </Carousel>
           </div>
@@ -132,7 +133,7 @@ const BusinessRegistrationForm = () => {
         {/* RIGHT SIDE FORM */}
         {/* RIGHT FORM SECTION */}
         <Col md={6} className="d-flex align-items-center justify-content-center">
-        <div className="w-100 p-1">
+        <div className="w-100 h-100 p-1">
           <h3 className="text-center mb-3">Business Registration</h3>
           <ProgressBar now={progress} label={`Step ${step} of 3`} className="mb-4 custom-progress" />
           {message && <Alert variant="success">{message}</Alert>}
@@ -147,7 +148,7 @@ const BusinessRegistrationForm = () => {
                   <Row>
                     <Col md={6}>
                       <Form.Group className="mb-3">
-                        <Form.Label>Store / Brand Name</Form.Label>
+                        <Form.Label>Store / Brand Name / Company Name</Form.Label>
                         <Form.Control name="storeName" value={formData.storeName} onChange={handleChange} required />
                       </Form.Group>
                     </Col>
@@ -192,7 +193,7 @@ const BusinessRegistrationForm = () => {
                   <Row>
                     <Col md={4}>
                       <Form.Group className="mb-3">
-                        <Form.Label>GST Number</Form.Label>
+                        <Form.Label>GST Number (Optional)</Form.Label>
                         <Form.Control name="gstNumber" value={formData.gstNumber} onChange={handleChange} />
                       </Form.Group>
                     </Col>
@@ -211,14 +212,28 @@ const BusinessRegistrationForm = () => {
                   </Row>
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Website / Store URL</Form.Label>
+                    <Form.Label>Website / Store URL (Optional)</Form.Label>
                     <Form.Control name="website" value={formData.website} onChange={handleChange} />
                   </Form.Group>
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Business Description</Form.Label>
-                    <Form.Control as="textarea" rows={2} name="description" value={formData.description} onChange={handleChange} />
-                  </Form.Group>
+  <Form.Label>Business Description</Form.Label>
+
+  <Form.Control
+    as="textarea"
+    rows={2}
+    name="description"
+    value={formData.description}
+    onChange={handleChange}
+    placeholder="Enter the size, weight and description"
+    style={{
+      fontSize: "14px",
+      fontWeight: "500"
+    }}
+  />
+</Form.Group>
+
+
 
                   <Row>
                     <Col md={6}>
@@ -272,6 +287,12 @@ const BusinessRegistrationForm = () => {
                   <Form.Group className="mb-3">
                     <Form.Label>Business Email</Form.Label>
                     <Form.Control type="email" name="businessEmail" value={formData.businessEmail} onChange={handleChange} required />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" name="password" value={formData.password} onChange={handleChange} required />
                   </Form.Group>
                 </Col>
               </Row>

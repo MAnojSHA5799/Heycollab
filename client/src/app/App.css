@@ -1,3 +1,22 @@
+:root {
+    --primary: #4B8CF5;
+    --secondary: #6A4CF3;
+    --accent: #36CFC9;
+  
+    --background: #FDFDFE;
+    --text: #1F1F1F;
+  
+    --violet: #7B61FF;
+    --lavender: #EDE9FE;
+    --coral: #FF5681;
+    --black: #212121;
+  
+    --tt-blue: #347BFF;
+    --tt-white: #F9FAFC;
+    --tt-teal: #36CFC9;
+    --tt-navy: #0F172A;
+  }
+  
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@500&family=Ubuntu:wght@500&display=swap');
 
 * {

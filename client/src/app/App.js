@@ -21,6 +21,11 @@ import WishItemsProvider from '../Context/WishItemsProvider';
 import DrawerNav from '../components/Nav/DrawerNav/DrawerNav';
 import Checkout from '../components/Checkout/Checkout';
 import SearchProvider from '../Context/SearchProvider';
+import AdminDashboard from '../components/Admin/AdminDashboard';
+import SellerDashboard from '../components/Seller/Dashboard';
+import CreatorDashboard from '../components/Creator/Dashboard';
+import PurchaserDashboard from '../components/Purchaser/Dashboard';
+import ProductDetail from '../components/Purchaser/ProductDetail';
 
 
 function App() {
@@ -61,10 +66,14 @@ function App() {
               </Route>
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/search/*" element={<SearchView />} />
+              <Route path="/seller/dashboard" element={<SellerDashboard />} />
+              <Route path="/creator-dashboard" element={<CreatorDashboard />} />
+              <Route path="/purchaser/dashboard" element={<PurchaserDashboard />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
             </Routes>
             <Footer />
             <Routes>
-            <Route path="/admin" element={<Wishlist />} />
+              <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </Router>
         </SearchProvider>

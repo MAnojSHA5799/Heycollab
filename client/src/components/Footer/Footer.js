@@ -14,9 +14,16 @@ const Footer = () => {
       <div className="footer-container">
         {/* Logo Section */}
         <div className="footer-logo">
-          <h1>HeyCollab</h1>
-          <p>Collaborate smarter. Grow faster.</p>
-        </div>
+  <h1>HeyCollab</h1> 
+  <p><strong>Where Brands and Creators Grow Together</strong></p>
+  <p className="tech">
+    <strong style={{ color: "#0070f3" }}>
+      @Powered by Zauvijek Tech.
+    </strong>
+  </p>
+</div>
+
+
 
         {/* Help Section */}
         <div className="footer-column">
@@ -33,9 +40,9 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Contact Us</h3>
           <ul>
-            <li><LocalPhoneIcon /> +123 4567 890</li>
-            <li><EmailIcon /> shop@heycollab.com</li>
-            <li><LocationOnIcon /> Addis Ababa, Ethiopia</li>
+            <li><LocalPhoneIcon />+91 9031025904</li>
+            <li><EmailIcon />tech@zauvijek.com</li>
+            <li><LocationOnIcon /> Sector 62 Noida, Uttar Pradesh - 201309</li>
           </ul>
         </div>
 

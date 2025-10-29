@@ -19,7 +19,9 @@ const sellerSchema = new mongoose.Schema(
 
     // 👤 Step 2: Contact & Pickup Address
     ownerName: String,
-    businessEmail: String,
+    businessEmail: { type: String, unique: true, sparse: true },
+    passwordHash: { type: String },
+    passwordSalt: { type: String },
     mobile: String,
     altContact: String,
     address1: String,
@@ -48,6 +50,8 @@ const sellerSchema = new mongoose.Schema(
     upi: String,
     paymentCycle: String,
     signature: String,
+    approved: { type: Boolean, default: false },
+    role: { type: String, default: "seller" },
   },
   { timestamps: true }
 );

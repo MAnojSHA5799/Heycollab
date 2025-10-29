@@ -4,6 +4,8 @@ const creatorSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    passwordHash: { type: String, required: true },
+    passwordSalt: { type: String, required: true },
     instagramLink: { type: String, required: true },
     youtubeLink: { type: String },
     facebookLink: { type: String },
@@ -18,6 +20,8 @@ const creatorSchema = new mongoose.Schema(
     pincode: { type: String, required: true },
     followerCount: { type: String },
     followedLinks: { type: [String], default: [] },
+    approved: { type: Boolean, default: false },
+    role: { type: String, default: "creator" },
   },
   { timestamps: true }
 );

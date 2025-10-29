@@ -21,6 +21,7 @@ const CreatorRegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    password: "",
     instagramLink: "",
     youtubeLink: "",
     facebookLink: "",
@@ -72,6 +73,7 @@ const CreatorRegistrationForm = () => {
       setFormData({
         name: "",
         email: "",
+        password: "",
         instagramLink: "",
         youtubeLink: "",
         facebookLink: "",
@@ -120,28 +122,28 @@ const CreatorRegistrationForm = () => {
             >
               <Carousel.Item>
                 <img
-                  src="/img/tech-vlogger.jpg"
+                  src="/Cretor/brunette-blogger-doing-her-make-up (1).jpg"
                   className="d-block w-100 h-100 object-fit-cover"
                   alt="Creator 1"
                 />
               </Carousel.Item>
-              {/* <Carousel.Item>
+              <Carousel.Item>
         <img
-          src="/img/beautiful-woman-happy-record-video.jpg"
+          src="/Cretor/female-vlogger-filming-makeup-video (1).jpg"
           className="d-block w-100 h-100 object-fit-cover"
           alt="Creator 2"
         />
-      </Carousel.Item> */}
+      </Carousel.Item>
               <Carousel.Item>
                 <img
-                  src="/img/front-view-man-recording-himself.jpg"
+                  src="/Cretor/makeup-artist-vlogging-her-tutorials (1).jpg"
                   className="d-block w-100 h-100 object-fit-cover"
                   alt="Creator 3"
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  src="/img/female-model-applying-daily-lip-gloss-while-looking-mirror.jpg"
+                  src="/Cretor/portrait-smiling-young-woman-showing-lipstick-camera (1).jpg"
                   className="d-block w-100 h-100 object-fit-cover"
                   alt="Creator 4"
                 />
@@ -204,7 +206,22 @@ const CreatorRegistrationForm = () => {
                         </Col>
                       </Row>
 
-                      <Form.Group className="mb-3">
+                      <Row>
+                        <Col md={6}>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Password *</Form.Label>
+                            <Form.Control
+                              type="password"
+                              name="password"
+                              value={formData.password}
+                              onChange={handleChange}
+                              placeholder="Create a strong password"
+                              required
+                            />
+                          </Form.Group>
+                        </Col>
+                        <Col md={6}>
+                        <Form.Group className="mb-3">
                         <Form.Label>WhatsApp Number *</Form.Label>
                         <Form.Control
                           type="text"
@@ -215,6 +232,10 @@ const CreatorRegistrationForm = () => {
                           required
                         />
                       </Form.Group>
+                        </Col>
+                      </Row>
+
+                     
 
                       <Row>
                         <Col md={6}>
@@ -319,25 +340,41 @@ const CreatorRegistrationForm = () => {
                   {/* STEP 3 - Category & Location */}
                   {step === 3 && (
                     <>
-                      <Form.Group className="mb-3">
-                        <Form.Label>NICHE CATEGORY *</Form.Label>
-                        <Form.Select
-                          name="nicheCategory"
-                          value={formData.nicheCategory}
-                          onChange={handleChange}
-                          required
-                        >
-                          <option value="">Select Category</option>
-                          <option value="Fashion">Fashion</option>
-                          <option value="Beauty">Beauty</option>
-                          <option value="Skincare">Skincare</option>
-                          <option value="Lifestyle">Lifestyle</option>
-                          <option value="Health/Wellness">
-                            Health / Wellness
-                          </option>
-                          <option value="Other">Other</option>
-                        </Form.Select>
-                      </Form.Group>
+                    <Form.Group className="mb-3">
+  <Form.Label>NICHE CATEGORY *</Form.Label>
+  <Form.Select
+    name="nicheCategory"
+    value={formData.nicheCategory}
+    onChange={handleChange}
+    required
+  >
+    <option value="">Select Category</option>
+
+    <option value="Fashion">Fashion</option>
+    <option value="Beauty">Beauty</option>
+    <option value="Skincare">Skincare</option>
+    <option value="Lifestyle">Lifestyle</option>
+    <option value="Health/Wellness">Health / Wellness</option>
+
+    {/* ✅ Apparel group */}
+    <optgroup label="Apparel">
+      <option value="Sarees">Sarees</option>
+      <option value="Kurtas & Kurtis">Kurtas & Kurtis</option>
+      <option value="Dress">Dress</option>
+      <option value="Choli">Choli</option>
+      <option value="Blouse">Blouse</option>
+      <option value="Kurta Sets & Salwar Suits">
+        Kurta Sets & Salwar Suits
+      </option>
+      <option value="Gowns">Gowns</option>
+      <option value="Dupattas">Dupattas</option>
+    </optgroup>
+
+    <option value="Artificial Jewellery">Artificial Jewellery</option>
+    <option value="Other">Other</option>
+  </Form.Select>
+</Form.Group>
+
 
                       <Row>
                         <Col md={6}>
