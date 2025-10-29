@@ -42,7 +42,8 @@ connectDB();
 
 // ✅ CORS setup (important part)
 const corsOptions = {
-  origin: "http://localhost:3000", // your frontend URL
+  // origin: "http://localhost:3000", // your frontend URL
+  origin: "https://heycollab.vercel.app", // your frontend URL 
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true, // allow cookies/auth headers
 };
