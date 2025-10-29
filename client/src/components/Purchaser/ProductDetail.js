@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:8000' });
+const api = axios.create({ baseURL: 'https://heycollab.onrender.com' });
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -31,7 +31,7 @@ export default function ProductDetail() {
           <h2 style={{ color:'#1F1F1F', marginTop:0 }}>{product.name}</h2>
           <div style={{ color:'#6b7280', marginBottom:8 }}>{product.type || '—'} · ₹{product.price}</div>
           {product.designImage && (
-            <img alt={product.name} src={`http://localhost:8000/${product.designImage}`} style={{ maxWidth:'100%', borderRadius:8, marginBottom:12 }} />
+            <img alt={product.name} src={`https://heycollab.onrender.com/${product.designImage}`} style={{ maxWidth:'100%', borderRadius:8, marginBottom:12 }} />
           )}
           <p style={{ color:'#1F1F1F' }}>{product.description || '—'}</p>
           <div style={{ marginTop:12, color:'#6b7280' }}>Status: {product.approved ? 'Approved' : 'Pending approval'}</div>

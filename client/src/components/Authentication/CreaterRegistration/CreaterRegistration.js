@@ -62,7 +62,7 @@ const CreatorRegistrationForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/creators/register",
+        "https://heycollab.onrender.com/api/creators/register",
         formData
       );
 

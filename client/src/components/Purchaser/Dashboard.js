@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:8000' });
+const api = axios.create({ baseURL: 'https://heycollab.onrender.com' });
 
 export default function PurchaserDashboard() {
   const [products, setProducts] = useState([]);

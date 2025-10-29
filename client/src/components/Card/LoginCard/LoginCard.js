@@ -22,7 +22,7 @@ const LoginCard = () => {
       let res;
 
       if (role === "creator") {
-        res = await axios.post("http://localhost:8000/api/creators/login", {
+        res = await axios.post("https://heycollab.onrender.com/api/creators/login", {
           email,
           password,
         });
@@ -30,7 +30,7 @@ const LoginCard = () => {
         localStorage.setItem("hey_creator_id", res.data.creatorId || "");
         navigate("/creator-dashboard");
       } else if (role === "seller") {
-        res = await axios.post("http://localhost:8000/api/sellers/login", {
+        res = await axios.post("https://heycollab.onrender.com/api/sellers/login", {
           businessEmail: email,
           password,
         });
@@ -38,7 +38,7 @@ const LoginCard = () => {
         localStorage.setItem("hey_seller_id", res.data.sellerId || "");
         navigate("/seller/dashboard");
       } else if (role === "purchaser") {
-        res = await axios.post("http://localhost:8000/api/purchasers/login", {
+        res = await axios.post("https://heycollab.onrender.com/api/purchasers/login", {
           email,
           password,
         });
@@ -46,7 +46,7 @@ const LoginCard = () => {
         localStorage.setItem("hey_purchaser_id", res.data.purchaserId || "");
         navigate("/purchaser/dashboard");
       } else if (role === "admin") {
-        res = await axios.post("http://localhost:8000/api/admin/login", {
+        res = await axios.post("https://heycollab.onrender.com/api/admin/login", {
           email,
           password,
         });

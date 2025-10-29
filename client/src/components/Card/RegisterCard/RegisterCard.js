@@ -72,7 +72,7 @@ const BusinessRegistrationForm = () => {
       const data = new FormData();
       Object.entries(formData).forEach(([key, value]) => data.append(key, value));
 
-      const res = await axios.post("http://localhost:8000/api/sellers/register", data, {
+      const res = await axios.post("https://heycollab.onrender.com/api/sellers/register", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
