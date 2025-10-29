@@ -22,8 +22,8 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Help</h3>
           <ul>
-            <li><a href="/account/register">Business Registration</a></li>
-            <li><a href="/account/creater-registration">Creator Registration</a></li>
+            {/* <li><a href="/account/register">Business Registration</a></li>
+            <li><a href="/account/creater-registration">Creator Registration</a></li> */}
             <li><a href="/">FAQ</a></li>
             <li><a href="/">Accessibility</a></li>
           </ul>
