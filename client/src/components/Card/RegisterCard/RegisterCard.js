@@ -233,11 +233,29 @@ const BusinessRegistrationForm = () => {
                             onChange={handleChange}
                           >
                             <option value="">Select Category</option>
-                            <option>Fashion</option>
-                            <option>Electronics</option>
-                            <option>Beauty</option>
-                            <option>Grocery</option>
-                            <option>Home Decor</option>
+
+<option value="Fashion">Fashion</option>
+<option value="Beauty">Beauty</option>
+<option value="Skincare">Skincare</option>
+<option value="Lifestyle">Lifestyle</option>
+<option value="Health/Wellness">Health / Wellness</option>
+
+{/* ✅ Apparel group */}
+<optgroup label="Apparel">
+  <option value="Sarees">Sarees</option>
+  <option value="Kurtas & Kurtis">Kurtas & Kurtis</option>
+  <option value="Dress">Dress</option>
+  <option value="Choli">Choli</option>
+  <option value="Blouse">Blouse</option>
+  <option value="Kurta Sets & Salwar Suits">
+    Kurta Sets & Salwar Suits
+  </option>
+  <option value="Gowns">Gowns</option>
+  <option value="Dupattas">Dupattas</option>
+</optgroup>
+
+<option value="Artificial Jewellery">Artificial Jewellery</option>
+<option value="Other">Other</option>
                           </Form.Select>
                         </Form.Group>
                       </Col>
