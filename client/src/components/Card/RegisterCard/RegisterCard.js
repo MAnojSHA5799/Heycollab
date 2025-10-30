@@ -173,7 +173,7 @@ const BusinessRegistrationForm = () => {
         {/* RIGHT SIDE FORM */}
         <Col md={6} className="d-flex align-items-center justify-content-center">
           <div className="w-100 h-100 p-1">
-            <h3 className="text-center mb-3">Business Registration</h3>
+            <h3 className="text-center mb-3">Business Onboarding</h3>
 
             <ProgressBar
               now={progress}
