@@ -161,7 +161,7 @@ const CreatorRegistrationForm = () => {
             <Card className="shadow-lg border-0 rounded-4">
               <Card.Body className="p-4">
                 <h3 className="text-center mb-4  text-black">
-                  Creator Registration
+                  Creator Onboarding
                 </h3>
 
                 <ProgressBar
