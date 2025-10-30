@@ -1,12 +1,22 @@
 "use client";
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, ProgressBar, Alert, Carousel } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  ProgressBar,
+  Alert,
+  Carousel,
+} from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
-import "./RegisterCard.css"; // 👈 optional CSS for custom styling
+import "./RegisterCard.css";
 
 const BusinessRegistrationForm = () => {
   const [step, setStep] = useState(1);
+
   const [formData, setFormData] = useState({
     storeName: "",
     businessType: "",
@@ -70,11 +80,17 @@ const BusinessRegistrationForm = () => {
     e.preventDefault();
     try {
       const data = new FormData();
-      Object.entries(formData).forEach(([key, value]) => data.append(key, value));
+      Object.entries(formData).forEach(([key, value]) =>
+        data.append(key, value)
+      );
 
-      const res = await axios.post("https://heycollab.onrender.com/api/sellers/register", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(
+        "https://heycollab.onrender.com/api/sellers/register",
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       if (res.status === 201 || res.data.success) {
         setMessage(res.data.message || "Registration successful!");
@@ -95,401 +111,655 @@ const BusinessRegistrationForm = () => {
     exit: { opacity: 0, y: -40 },
   };
 
-  const progress = (step / 3) * 100;
+  const progress = (step / 5) * 100;
 
   return (
-    <Container fluid className="py-3registration-container">
+    <Container fluid className="py-3 registration-container">
       <Row className="justify-content-center align-items-center">
-        {/* LEFT SIDE IMAGE SLIDER */}
-        <Col md={6} className="d-none d-md-flex align-items-center justify-content-center">
-          <div className="form-image w-100 h-100">
-            <Carousel fade controls={false} indicators={false} interval={1000} className="w-100 h-100 rounded-start-4 overflow-hidden">
-              {/* <Carousel.Item>
-                <img
-                  src="/business/formal-man-using-tablet-office.jpg"
-                  className="d-block w-100 h-100 object-fit-cover"
-                  alt="Business slide 1"
-                />
-              </Carousel.Item> */}
+        {/* LEFT SIDE SLIDER */}
+        <Col
+          md={6}
+          className="d-none d-md-flex align-items-center justify-content-center"
+        >
+          <div className="form-image w-100 h-50">
+            <Carousel
+              fade
+              controls={false}
+              indicators={false}
+              interval={1000}
+              className="w-100 h-50 rounded-start-4 overflow-hidden"
+            >
               <Carousel.Item>
                 <img
-                  src="/Cretor/man-woman-watching-laptop-office (1).jpg"
+                  src="/business/four.png"
+                  className="d-block w-100 h-50 object-fit-cover"
+                  alt="slide1"
+                />
+              </Carousel.Item>
+
+              <Carousel.Item>
+                <img
+                  src="/business/portrait-indian-man-selling-fabrics.jpg"
                   className="d-block w-100 h-100 object-fit-cover"
-                  alt="Business slide 2"
+                  alt="slide2"
+                />
+              </Carousel.Item>
+
+              <Carousel.Item>
+                <img
+                  src="/business/one.png"
+                  className="d-block w-100 h-100 object-fit-cover"
+                  alt="slide3"
                 />
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  src="/Cretor/fashionable-woman-office-using-laptop (1).jpg"
+                  src="/business/two.png"
                   className="d-block w-100 h-100 object-fit-cover"
-                  alt="Business slide 3"
+                  alt="slide3"
                 />
               </Carousel.Item>
-             
+              <Carousel.Item>
+                <img
+                  src="/business/three.png"
+                  className="d-block w-100 h-100 object-fit-cover"
+                  alt="slide3"
+                />
+              </Carousel.Item>
             </Carousel>
           </div>
         </Col>
 
         {/* RIGHT SIDE FORM */}
-        {/* RIGHT FORM SECTION */}
         <Col md={6} className="d-flex align-items-center justify-content-center">
-        <div className="w-100 h-100 p-1">
-          <h3 className="text-center mb-3">Business Registration</h3>
-          <ProgressBar now={progress} label={`Step ${step} of 3`} className="mb-4 custom-progress" />
-          {message && <Alert variant="success">{message}</Alert>}
-          {error && <Alert variant="danger">{error}</Alert>}
+          <div className="w-100 h-100 p-1">
+            <h3 className="text-center mb-3">Business Registration</h3>
 
-          <AnimatePresence mode="wait">
-            {/* STEP 1 */}
-            {step === 1 && (
-              <motion.div key="step1" {...animation} transition={{ duration: 0.4 }}>
-                <h5 className="mb-3">Business & Store Details</h5>
-                <Form>
-                  <Row>
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Store / Brand Name / Company Name</Form.Label>
-                        <Form.Control name="storeName" value={formData.storeName} onChange={handleChange} required />
-                      </Form.Group>
-                    </Col>
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Business Type</Form.Label>
-                        <Form.Select name="businessType" value={formData.businessType} onChange={handleChange}>
-                          <option value="">Select</option>
-                          <option>Individual</option>
-                          <option>Proprietorship</option>
-                          <option>LLP</option>
-                          <option>Pvt. Ltd.</option>
-                          <option>Public Ltd.</option>
-                          <option>Partnership</option>
-                        </Form.Select>
-                      </Form.Group>
-                    </Col>
-                  </Row>
+            <ProgressBar
+              now={progress}
+              label={`Step ${step} of 5`}
+              className="mb-4 custom-progress"
+            />
 
-                  <Row>
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Category / Industry</Form.Label>
-                        <Form.Select name="category" value={formData.category} onChange={handleChange}>
-                          <option value="">Select Category</option>
-                          <option>Fashion</option>
-                          <option>Electronics</option>
-                          <option>Grocery</option>
-                          <option>Beauty</option>
-                          <option>Home Decor</option>
-                        </Form.Select>
-                      </Form.Group>
-                    </Col>
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Date of Establishment</Form.Label>
-                        <Form.Control type="date" name="dateOfEstablishment" value={formData.dateOfEstablishment} onChange={handleChange} />
-                      </Form.Group>
-                    </Col>
-                  </Row>
+            {message && <Alert variant="success">{message}</Alert>}
+            {error && <Alert variant="danger">{error}</Alert>}
 
-                  <Row>
-                    <Col md={4}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>GST Number (Optional)</Form.Label>
-                        <Form.Control name="gstNumber" value={formData.gstNumber} onChange={handleChange} />
-                      </Form.Group>
-                    </Col>
-                    <Col md={4}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>PAN Number</Form.Label>
-                        <Form.Control name="panNumber" value={formData.panNumber} onChange={handleChange} />
-                      </Form.Group>
-                    </Col>
-                    <Col md={4}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>FSSAI Number</Form.Label>
-                        <Form.Control name="fssaiNumber" value={formData.fssaiNumber} onChange={handleChange} />
-                      </Form.Group>
-                    </Col>
-                  </Row>
+            <AnimatePresence mode="wait">
+              {/* ✅ STEP 1 */}
+              {step === 1 && (
+                <motion.div key="step1" {...animation} transition={{ duration: 0.4 }}>
+                  <h5 className="mb-3">Store / Business Details</h5>
+                  <Form>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Store / Brand / Company Name</Form.Label>
+                          <Form.Control
+                            name="storeName"
+                            value={formData.storeName}
+                            onChange={handleChange}
+                            required
+                          />
+                        </Form.Group>
+                      </Col>
 
-                  <Form.Group className="mb-3">
-                    <Form.Label>Website / Store URL (Optional)</Form.Label>
-                    <Form.Control name="website" value={formData.website} onChange={handleChange} />
-                  </Form.Group>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Business Type</Form.Label>
+                          <Form.Select
+                            name="businessType"
+                            value={formData.businessType}
+                            onChange={handleChange}
+                          >
+                            <option value="">Select</option>
+                            <option>Individual</option>
+                            <option>Proprietorship</option>
+                            <option>LLP</option>
+                            <option>Pvt. Ltd.</option>
+                            <option>Public Ltd.</option>
+                            <option>Partnership</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                  <Form.Group className="mb-3">
-  <Form.Label>Business Description</Form.Label>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Category / Industry</Form.Label>
+                          <Form.Select
+                            name="category"
+                            value={formData.category}
+                            onChange={handleChange}
+                          >
+                            <option value="">Select Category</option>
+                            <option>Fashion</option>
+                            <option>Electronics</option>
+                            <option>Beauty</option>
+                            <option>Grocery</option>
+                            <option>Home Decor</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
 
-  <Form.Control
-    as="textarea"
-    rows={2}
-    name="description"
-    value={formData.description}
-    onChange={handleChange}
-    placeholder="Enter the size, weight and description"
-    style={{
-      fontSize: "14px",
-      fontWeight: "500"
-    }}
-  />
-</Form.Group>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Date of Establishment</Form.Label>
+                          <Form.Control
+                            type="date"
+                            name="dateOfEstablishment"
+                            value={formData.dateOfEstablishment}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
+                    <Form.Group className="mb-3">
+                      <Form.Label>Business Description</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={2}
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        placeholder="Describe your business"
+                      />
+                    </Form.Group>
 
-
-                  <Row>
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Business Logo</Form.Label>
-                        <Form.Control type="file" name="logo" onChange={handleChange} accept=".jpg,.png" />
-                      </Form.Group>
-                    </Col>
-                    <Col md={3}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Product Count</Form.Label>
-                        <Form.Control type="number" name="productCount" value={formData.productCount} onChange={handleChange} />
-                      </Form.Group>
-                    </Col>
-                    <Col md={3}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Avg. Monthly Orders</Form.Label>
-                        <Form.Control type="number" name="monthlyOrders" value={formData.monthlyOrders} onChange={handleChange} />
-                      </Form.Group>
-                    </Col>
-                  </Row>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label>Business Model</Form.Label><br />
-                    <Form.Check inline label="B2C" name="businessModel" value="B2C" type="radio" checked={formData.businessModel === "B2C"} onChange={handleChange} />
-                    <Form.Check inline label="B2B" name="businessModel" value="B2B" type="radio" checked={formData.businessModel === "B2B"} onChange={handleChange} />
-                    <Form.Check inline label="D2C" name="businessModel" value="D2C" type="radio" checked={formData.businessModel === "D2C"} onChange={handleChange} />
-                  </Form.Group>
-
-                  <div className="d-flex justify-content-end">
-                    <Button className="next-btn" onClick={nextStep}>Next →</Button>
-                  </div>
-                </Form>
-              </motion.div>
-            )}
-
-            {/* Step 2 + Step 3 remain same (as in your current code) */}
-            {/* STEP 2 */}
-        {step === 2 && (
-          <motion.div key="step2" {...animation} transition={{ duration: 0.4 }}>
-            <h5 className="mb-3 text-center">Contact & Pickup Address</h5>
-            <Form>
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Owner / Seller Name</Form.Label>
-                    <Form.Control name="ownerName" value={formData.ownerName} onChange={handleChange} required />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Business Email</Form.Label>
-                    <Form.Control type="email" name="businessEmail" value={formData.businessEmail} onChange={handleChange} required />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name="password" value={formData.password} onChange={handleChange} required />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Mobile Number</Form.Label>
-                    <Form.Control type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Alternate Contact</Form.Label>
-                    <Form.Control type="text" name="altContact" value={formData.altContact} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Pickup Address Line 1</Form.Label>
-                <Form.Control name="address1" value={formData.address1} onChange={handleChange} required />
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Pickup Address Line 2</Form.Label>
-                <Form.Control name="address2" value={formData.address2} onChange={handleChange} />
-              </Form.Group>
-
-              <Row>
-                <Col md={4}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Country</Form.Label>
-                    <Form.Control name="country" value={formData.country} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-                <Col md={4}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>State</Form.Label>
-                    <Form.Control name="state" value={formData.state} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-                <Col md={4}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control name="city" value={formData.city} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Pincode</Form.Label>
-                <Form.Control type="number" name="pincode" value={formData.pincode} onChange={handleChange} />
-              </Form.Group>
-
-              <Form.Check
-                type="checkbox"
-                label="Return Address different?"
-                name="hasReturnAddress"
-                checked={formData.hasReturnAddress}
-                onChange={handleChange}
-              />
-
-              {formData.hasReturnAddress && (
-                <>
-                  <Form.Group className="mt-2">
-                    <Form.Label>Return Address Line 1</Form.Label>
-                    <Form.Control name="returnAddress1" value={formData.returnAddress1} onChange={handleChange} />
-                  </Form.Group>
-                  <Form.Group className="mt-2 mb-3">
-                    <Form.Label>Return Address Line 2</Form.Label>
-                    <Form.Control name="returnAddress2" value={formData.returnAddress2} onChange={handleChange} />
-                  </Form.Group>
-                </>
+                    <div className="d-flex justify-content-end">
+                      <Button className="next-btn" onClick={nextStep}>
+                        Next →
+                      </Button>
+                    </div>
+                  </Form>
+                </motion.div>
               )}
 
-              <Form.Group className="mb-3">
-                <Form.Label>Business Hours</Form.Label>
-                <Form.Control name="businessHours" value={formData.businessHours} onChange={handleChange} />
-              </Form.Group>
+              {/* ✅ STEP 2 */}
+              {step === 2 && (
+                <motion.div key="step2" {...animation} transition={{ duration: 0.4 }}>
+                  <h5 className="mb-3">Legal & Identification</h5>
+                  <Form>
+                    <Row>
+                      <Col md={4}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>GST No (Optional)</Form.Label>
+                          <Form.Control
+                            name="gstNumber"
+                            value={formData.gstNumber}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Support Email / WhatsApp</Form.Label>
-                <Form.Control name="supportContact" value={formData.supportContact} onChange={handleChange} />
-              </Form.Group>
+                      <Col md={4}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>PAN No (Optional)</Form.Label>
+                          <Form.Control
+                            name="panNumber"
+                            value={formData.panNumber}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
 
-              <div className="d-flex justify-content-between">
-                <Button variant="secondary" onClick={prevStep}>← Back</Button>
-                <Button className="next-btn" onClick={nextStep}>Next →</Button>
-              </div>
-            </Form>
-          </motion.div>
-        )}
+                      <Col md={4}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>FSSAI No (Optional)</Form.Label>
+                          <Form.Control
+                            name="fssaiNumber"
+                            value={formData.fssaiNumber}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-        {/* STEP 3 */}
-        {step === 3 && (
-          <motion.div key="step3" {...animation} transition={{ duration: 0.4 }}>
-            <h5 className="mb-3 text-center">Documents & Payment Info</h5>
-            <Form onSubmit={handleSubmit}>
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Aadhaar Card</Form.Label>
-                    <Form.Control type="file" name="aadhaar" onChange={handleChange} accept=".jpg,.pdf" />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>PAN Card</Form.Label>
-                    <Form.Control type="file" name="pancard" onChange={handleChange} accept=".jpg,.pdf" />
-                  </Form.Group>
-                </Col>
-              </Row>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Website (Optional)</Form.Label>
+                      <Form.Control
+                        name="website"
+                        value={formData.website}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
 
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>GST Certificate</Form.Label>
-                    <Form.Control type="file" name="gstCertificate" onChange={handleChange} accept=".jpg,.pdf" />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Business Registration Certificate</Form.Label>
-                    <Form.Control type="file" name="registrationCert" onChange={handleChange} accept=".jpg,.pdf" />
-                  </Form.Group>
-                </Col>
-              </Row>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Product Count</Form.Label>
+                          <Form.Control
+                            type="number"
+                            name="productCount"
+                            value={formData.productCount}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Cancelled Cheque / Passbook Copy</Form.Label>
-                <Form.Control type="file" name="cancelledCheque" onChange={handleChange} accept=".jpg,.pdf" />
-              </Form.Group>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Avg. Monthly Orders</Form.Label>
+                          <Form.Control
+                            type="number"
+                            name="monthlyOrders"
+                            value={formData.monthlyOrders}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Bank Name</Form.Label>
-                    <Form.Control name="bankName" value={formData.bankName} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Account Holder Name</Form.Label>
-                    <Form.Control name="accountHolder" value={formData.accountHolder} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-              </Row>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Business Model</Form.Label>
+                      <br />
+                      <Form.Check
+                        inline
+                        label="B2C"
+                        name="businessModel"
+                        type="radio"
+                        value="B2C"
+                        checked={formData.businessModel === "B2C"}
+                        onChange={handleChange}
+                      />
+                      <Form.Check
+                        inline
+                        label="B2B"
+                        name="businessModel"
+                        type="radio"
+                        value="B2B"
+                        checked={formData.businessModel === "B2B"}
+                        onChange={handleChange}
+                      />
+                      <Form.Check
+                        inline
+                        label="D2C"
+                        name="businessModel"
+                        type="radio"
+                        value="D2C"
+                        checked={formData.businessModel === "D2C"}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
 
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Account Number</Form.Label>
-                    <Form.Control name="accountNumber" value={formData.accountNumber} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>IFSC Code</Form.Label>
-                    <Form.Control name="ifsc" value={formData.ifsc} onChange={handleChange} />
-                  </Form.Group>
-                </Col>
-              </Row>
+                    <div className="d-flex justify-content-between">
+                      <Button variant="secondary" onClick={prevStep}>
+                        ← Back
+                      </Button>
+                      <Button className="next-btn" onClick={nextStep}>
+                        Next →
+                      </Button>
+                    </div>
+                  </Form>
+                </motion.div>
+              )}
 
-              <Form.Group className="mb-3">
-                <Form.Label>Branch Name</Form.Label>
-                <Form.Control name="branchName" value={formData.branchName} onChange={handleChange} />
-              </Form.Group>
+              {/* ✅ STEP 3 */}
+              {step === 3 && (
+                <motion.div key="step3" {...animation} transition={{ duration: 0.4 }}>
+                  <h5 className="mb-3">Contact & Pickup Address</h5>
+                  <Form>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Owner / Seller Name</Form.Label>
+                          <Form.Control
+                            name="ownerName"
+                            value={formData.ownerName}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
 
-              <Form.Group className="mb-3">
-                <Form.Label>UPI ID (Optional)</Form.Label>
-                <Form.Control name="upi" value={formData.upi} onChange={handleChange} />
-              </Form.Group>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Business Email</Form.Label>
+                          <Form.Control
+                            type="email"
+                            name="businessEmail"
+                            value={formData.businessEmail}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Preferred Payment Cycle</Form.Label>
-                <Form.Select name="paymentCycle" value={formData.paymentCycle} onChange={handleChange}>
-                  <option value="">Select Cycle</option>
-                  <option>Weekly</option>
-                  <option>Biweekly</option>
-                  <option>Monthly</option>
-                </Form.Select>
-              </Form.Group>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Password</Form.Label>
+                          <Form.Control
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Signature / Seal</Form.Label>
-                <Form.Control type="file" name="signature" onChange={handleChange} accept=".png,.jpg" />
-              </Form.Group>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Mobile</Form.Label>
+                          <Form.Control
+                            name="mobile"
+                            value={formData.mobile}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-              <div className="d-flex justify-content-between">
-                <Button variant="secondary" onClick={prevStep}>← Back</Button>
-                <Button type="submit" className="next-btn">Submit</Button>
-              </div>
-            </Form>
-          </motion.div>
-        )}
-          </AnimatePresence>
+                    <Row>
+  <Col md={6}>
+    <Form.Group className="mb-3">
+      <Form.Label>Pickup Address</Form.Label>
+      <Form.Control
+        name="address1"
+        value={formData.address1}
+        onChange={handleChange}
+      />
+    </Form.Group>
+  </Col>
+
+  <Col md={6}>
+    <Form.Group className="mb-3">
+      <Form.Label>Address Line 2</Form.Label>
+      <Form.Control
+        name="address2"
+        value={formData.address2}
+        onChange={handleChange}
+      />
+    </Form.Group>
+  </Col>
+</Row>
+
+
+                    <Row>
+                      <Col md={3}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Country</Form.Label>
+                          <Form.Control
+                            name="country"
+                            value={formData.country}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+
+                      <Col md={3}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>State</Form.Label>
+                          <Form.Control
+                            name="state"
+                            value={formData.state}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+
+                      <Col md={3}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>City</Form.Label>
+                          <Form.Control
+                            name="city"
+                            value={formData.city}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+
+                      <Col md={3}>
+                      <Form.Group className="mb-3">
+                      <Form.Label>Pincode</Form.Label>
+                      <Form.Control
+                        type="number"
+                        name="pincode"
+                        value={formData.pincode}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                      </Col>
+                    </Row>
+
+                    
+
+                    <div className="d-flex justify-content-between">
+                      <Button variant="secondary" onClick={prevStep}>
+                        ← Back
+                      </Button>
+                      <Button className="next-btn" onClick={nextStep}>
+                        Next →
+                      </Button>
+                    </div>
+                  </Form>
+                </motion.div>
+              )}
+
+              {/* ✅ STEP 4 */}
+              {step === 4 && (
+                <motion.div key="step4" {...animation} transition={{ duration: 0.4 }}>
+                  <h5 className="mb-3">Documents Upload</h5>
+                  <Form>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Aadhaar</Form.Label>
+                          <Form.Control
+                            type="file"
+                            name="aadhaar"
+                            accept=".jpg,.pdf"
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>PAN Card (Optional)</Form.Label>
+                          <Form.Control
+                            type="file"
+                            name="pancard"
+                            accept=".jpg,.pdf"
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>GST Certificate</Form.Label>
+                          <Form.Control
+                            type="file"
+                            name="gstCertificate"
+                            accept=".jpg,.pdf"
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Business Registration</Form.Label>
+                          <Form.Control
+                            type="file"
+                            name="registrationCert"
+                            accept=".jpg,.pdf"
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Form.Group className="mb-3">
+                      <Form.Label>Cancelled Cheque / Passbook</Form.Label>
+                      <Form.Control
+                        type="file"
+                        name="cancelledCheque"
+                        accept=".jpg,.pdf"
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+
+                    <div className="d-flex justify-content-between">
+                      <Button variant="secondary" onClick={prevStep}>
+                        ← Back
+                      </Button>
+                      <Button className="next-btn" onClick={nextStep}>
+                        Next →
+                      </Button>
+                    </div>
+                  </Form>
+                </motion.div>
+              )}
+
+              {/* ✅ STEP 5 */}
+              {step === 5 && (
+                <motion.div key="step5" {...animation} transition={{ duration: 0.4 }}>
+                  <h5 className="mb-3">Payment & Signature</h5>
+                  <Form onSubmit={handleSubmit}>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Bank Name</Form.Label>
+                          <Form.Control
+                            name="bankName"
+                            value={formData.bankName}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Account Holder</Form.Label>
+                          <Form.Control
+                            name="accountHolder"
+                            value={formData.accountHolder}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Account Number</Form.Label>
+                          <Form.Control
+                            name="accountNumber"
+                            value={formData.accountNumber}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>IFSC Code</Form.Label>
+                          <Form.Control
+                            name="ifsc"
+                            value={formData.ifsc}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Row>
+  <Col md={6}>
+    <Form.Group className="mb-3">
+      <Form.Label>Branch Name</Form.Label>
+      <Form.Control
+        name="branchName"
+        value={formData.branchName}
+        onChange={handleChange}
+      />
+    </Form.Group>
+  </Col>
+
+  <Col md={6}>
+    <Form.Group className="mb-3">
+      <Form.Label>UPI ID</Form.Label>
+      <Form.Control
+        name="upi"
+        value={formData.upi}
+        onChange={handleChange}
+        required
+      />
+    </Form.Group>
+  </Col>
+</Row>
+
+
+<Row>
+  <Col md={6}>
+    <Form.Group className="mb-3">
+      <Form.Label>Preferred Payment Cycle</Form.Label>
+      <Form.Select
+        name="paymentCycle"
+        value={formData.paymentCycle}
+        onChange={handleChange}
+      >
+        <option value="">Select Cycle</option>
+        {/* <option>Weekly</option> */}
+        {/* <option>Biweekly</option> */}
+        <option>Monthly</option>
+      </Form.Select>
+    </Form.Group>
+  </Col>
+
+  <Col md={6}>
+    {/* ✅ SIGNATURE */}
+    <Form.Group className="mb-3">
+      <Form.Label>Signature</Form.Label>
+
+      <Form.Control
+        type="file"
+        name="signature"
+        accept="image/*"
+        onChange={(e) => {
+          const file = e.target.files[0];
+          setFormData({
+            ...formData,
+            signature: file,
+            signaturePreview: URL.createObjectURL(file),
+          });
+        }}
+      />
+
+      {formData.signaturePreview && (
+        <img
+          src={formData.signaturePreview}
+          alt="signature preview"
+          style={{
+            width: "150px",
+            marginTop: "10px",
+            borderRadius: "6px",
+            border: "1px solid #ddd",
+          }}
+        />
+      )}
+    </Form.Group>
+  </Col>
+</Row>
+
+
+<div className="d-flex justify-content-between mt-3">
+  <Button variant="secondary" onClick={prevStep}>
+    ← Back
+  </Button>
+
+  <Button type="submit" className="next-btn">
+    Submit 
+  </Button>
+</div>
+   </Form>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </Col>
       </Row>

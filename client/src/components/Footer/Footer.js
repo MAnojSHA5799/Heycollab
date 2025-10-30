@@ -40,7 +40,7 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Contact Us</h3>
           <ul>
-            <li><LocalPhoneIcon />+91 9031025904</li>
+            <li><LocalPhoneIcon />+91 7370940256</li>
             <li><EmailIcon />tech@zauvijek.com</li>
             <li><LocationOnIcon /> Sector 62 Noida, Uttar Pradesh - 201309</li>
           </ul>
